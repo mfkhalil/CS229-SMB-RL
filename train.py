@@ -3,6 +3,6 @@ from stable_baselines3 import PPO
 
 
 env = utils.make_env()
-callback = utils.CallbackFunction(models_path=utils.MODEL_DIR, videos_path=utils.VIDEO_DIR, save_frequency=50000)
+callback = utils.CallbackFunction(models_path=utils.MODEL_DIR, videos_path=utils.VIDEO_DIR, save_frequency=500)
 model = PPO('CnnPolicy', env, verbose=1, tensorboard_log=utils.LOG_DIR, learning_rate=0.000001, n_steps=512)
 model.learn(total_timesteps=1000000, callback=callback)
