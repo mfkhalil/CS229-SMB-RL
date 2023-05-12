@@ -1,0 +1,6 @@
+gym_super_mario_bros
+nes-py
+gym
+setuptools==66
+wheel==0.38.4
+stable-baselines3[extra]
