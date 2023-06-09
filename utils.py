@@ -15,9 +15,9 @@ from gym.spaces.box import Box
 MODEL_DIR = './models/PPO/'
 LOG_DIR = './logs/PPO/'
 
-
 def make_env(grayscale=True, framestack=True):
     env = gym_super_mario_bros.make('SuperMarioBros-1-1-v0')
+    env = Monitor(env, filename=LOG_DIR, allow_early_resets=True)
     env = JoypadSpace(env, SIMPLE_MOVEMENT)
     if grayscale:
         env = GrayScaleObservation(env, keep_dim=True)
@@ -25,6 +25,7 @@ def make_env(grayscale=True, framestack=True):
     if framestack:
         env = VecFrameStack(env, 4, channels_order='last')
     return env
+
 
 class CallbackFunction(BaseCallback):
 
