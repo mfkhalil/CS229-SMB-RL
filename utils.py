@@ -12,12 +12,12 @@ from gym.wrappers import GrayScaleObservation, FrameStack
 from gym import spaces
 from gym.spaces.box import Box
 
-MODEL_DIR = './models/PPO/'
-LOG_DIR = './logs/PPO/'
+MODEL_DIR = './models/A2C/'
+LOG_DIR = './logs/A2C/'
 
-def make_env(grayscale=True, framestack=True):
+def make_env(grayscale=True, framestack=True, log_dir=LOG_DIR):
     env = gym_super_mario_bros.make('SuperMarioBros-1-1-v0')
-    env = Monitor(env, filename=LOG_DIR, allow_early_resets=True)
+    env = Monitor(env, filename=log_dir, allow_early_resets=True)
     env = JoypadSpace(env, SIMPLE_MOVEMENT)
     if grayscale:
         env = GrayScaleObservation(env, keep_dim=True)
